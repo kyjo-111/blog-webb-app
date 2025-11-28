@@ -1,0 +1,179 @@
+/* 1. APPLY THE ANIMATION TO THE BACKGROUND */
+html, body {
+    /* The Animated Gradient */
+    background: linear-gradient(-45deg, #fcfbf4, #f5f5dc, #faf0e6, #fdf5e6);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    
+    /* Ensure it covers the full screen */
+    min-height: 100vh;
+    margin: 0;
+    
+    /* Important: Override any Bootstrap white/beige backgrounds */
+    background-color: transparent !important; 
+}
+
+/* 2. MAKE BOOTSTRAP ELEMENTS TRANSPARENT */
+/* This lets the body's animation show through the header and footer */
+.container, .container-fluid, header, footer, .navbar, .d-flex {
+    background-color: transparent !important;
+}
+
+/* 3. THE ANIMATION KEYFRAMES */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Change the main "Read Blogs" button */
+.btn-primary {
+    background-color: #5d4037; /* Dark Brown */
+    border-color: #5d4037;
+    color: #ffffff;
+}
+
+/* Change the hover state (when mouse is over it) */
+.btn-primary:hover {
+    background-color: #4e342e; /* Slightly darker brown */
+    border-color: #4e342e;
+}
+
+/* Change the "Start Writing" outline button */
+.btn-outline-secondary {
+    color: #5d4037; /* Brown text */
+    border-color: #5d4037; /* Brown border */
+}
+
+/* FORCE the hover state to be brown */
+/* Target the button with extreme prejudice! */
+body .btn-outline-secondary:hover,
+body .btn-outline-secondary:active,
+body .btn-outline-secondary:focus,
+body .btn-outline-secondary.active {
+    background-color: #5d4037 !important;
+    border-color: #5d4037 !important;
+    color: #ffffff !important;
+    box-shadow: none !important; /* Removes the blue glow */
+}
+/* 1. Change the "Active" box (The one that is currently Blue) */
+.nav-pills .nav-link.active {
+    background-color: #5d4037; /* Your Brown Color */
+    color: #ffffff; /* White text */
+}
+
+/* 2. Change the text color of the other links (so they aren't standard blue) */
+.nav-link {
+    color: #5d4037; /* Brown text */
+}
+
+/* 3. Add a hover effect for the other links */
+.nav-link:hover {
+    color: #3e2723; /* A darker brown when you mouse over */
+    background-color: rgba(93, 64, 55, 0.1); /* Optional: slight brown tint on hover */
+}
+
+/* 1. The Container */
+.glow-container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh; /* Bootstrap equivalent: min-vh-100 */
+    background-color: #ffffff;
+    overflow: hidden; /* Stops the glow from spilling out */
+}
+
+/* 2. The Glow Effect */
+.yellow-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Put it behind the text */
+    
+    /* The Magic Gradient from your snippet */
+    background-image: radial-gradient(circle at center, #FFF991 0%, transparent 70%);
+    opacity: 0.6;
+    mix-blend-mode: multiply;
+    
+    /* Let's animate it so it isn't static! */
+    animation: glowPulse 8s ease-in-out infinite alternate;
+}
+
+/* 3. The Animation Keyframes */
+@keyframes glowPulse {
+    0% { transform: scale(1); opacity: 0.6; }
+    100% { transform: scale(1.2); opacity: 0.8; }
+}
+
+/* 4. Ensure your content sits ON TOP of the glow */
+.content-wrapper {
+    position: relative;
+    z-index: 1; /* Higher than the glow */
+}
+
+
+/* 1. The Container for the typing effect */
+.typewriter h1 {
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid #5d4037; /* The typewriter cursor (use your brown color) */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  
+  /* The Animations */
+  /* typing: duration (3.5s), steps (number of characters), infinite loop or forwards to stop */
+  /* blink-caret: makes the cursor blink */
+  animation: 
+    typing 3.5s steps(40, end),
+    blink-caret .75s step-end infinite;
+}
+
+/* 2. The Typing Animation */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* 3. The Blinking Cursor Animation */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #5d4037; } /* Match your cursor color */
+}
+
+/* Example for "Elegant" Look */
+h1, h2, h3, .navbar-brand {
+    font-family: 'Playfair Display', serif;
+}
+
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+/* Target the subtext paragraph */
+.lead {
+    font-family: 'Open Sans', sans-serif; /* Use your Sans font here */
+    font-weight: 400; /* Regular weight, not too thin */
+    opacity: 0.8; /* Make it slightly darker so it's readable */
+    letter-spacing: 1px; /* Give it some air */
+}
+
+.fs-4 {
+     font-family: 'Playfair Display', serif;
+}
+
+.btn-outline-primary {
+    color: #4e342e;
+    border-color: #5d4037;
+}
+
+/* Add these hover/active/focus states for .btn-outline-primary */
+body .btn-outline-primary:hover,
+body .btn-outline-primary:active,
+body .btn-outline-primary:focus,
+body .btn-outline-primary.active {
+    background-color: #5d4037 !important;
+    border-color: #5d4037 !important;
+    color: #ffffff !important;
+    box-shadow: none !important;
+}
