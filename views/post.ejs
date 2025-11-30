@@ -1,0 +1,39 @@
+<%- include("partials/header.ejs") %>
+
+<div class="container mt-5">
+  
+  <!-- Back Button -->
+  <a href="/view" class="btn btn-outline-secondary mb-4">&larr; Back to Feed</a>
+
+  <!-- Blog Post Content -->
+  <article class="blog-post">
+    <h1 class="display-3 fw-bold mb-3"><%= post.title %></h1>
+    <p class="text-muted border-bottom pb-3 mb-4">
+      Published on <%= post.date || new Date().toLocaleDateString() %>
+    </p>
+    
+    <!-- Post content with nice typography -->
+    <div class="fs-5 lh-lg" style="white-space: pre-wrap;">
+      <%= post.content %>
+    </div>
+  </article>
+
+  <!-- Action Buttons (Edit & Delete) -->
+  <div class="mt-5 pt-4 border-top">
+    <div class="d-flex gap-3 align-items-center">
+      
+      <!-- Edit Button -->
+      <a href="/edit/<%= index %>" class="btn btn-warning">Edit Post</a>
+      
+      <!-- Delete Form (inline with button) -->
+      <form action="/delete" method="POST" style="display: inline; margin: 0;" onsubmit="return confirm('Delete this post?');">
+        <input type="hidden" name="postIndex" value="<%= index %>">
+        <button type="submit" class="btn btn-danger">Delete Post</button>
+      </form>
+      
+    </div>
+  </div>
+
+</div>
+
+<%- include("partials/footer.ejs") %>
